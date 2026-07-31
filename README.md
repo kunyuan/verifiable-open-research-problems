@@ -9,6 +9,18 @@ This repository contains five research problems selected for an unusual but usef
 
 The collection is intended for research agents, human researchers, and reviewer agents. Difficulty of discovery is not a rejection criterion. The central selection criterion is the separation between a hard search problem and a comparatively simple verification problem.
 
+## Verification difficulty
+
+This collection uses the existing [0–10 residual-verification rubric](https://github.com/kunyuan/open-research-discovery/blob/main/docs/verification-difficulty-casebook.md) from `kunyuan/open-research-discovery`. The score measures only the burden left on an independent Reviewer after every mechanically delegable check has been delegated. It never measures solving or discovery difficulty, expected solve time, compute, searchability, feedback density, or probability of success.
+
+- **0:** no residual reasoning remains after mechanical checks, replay, or certificates, and specification fidelity is trivial.
+- **1–3:** a few independent, local, standard reasoning units remain.
+- **4–6:** connected derivations or substantial specification-fidelity reconstruction remain.
+- **7–9:** a long, fragile, or novel chain remains.
+- **10:** the essential claim requires holistic review and cannot be decomposed into independently checkable units.
+
+Within that existing scale, an exact solution whose practical acceptance path relies primarily on independent numerical reproduction of the original finite-size model is **verification difficulty 2**. Typical examples include spectra, energies, gaps, correlators, and finite-time evolution in quantum many-body or integrable models. The light residual is checking model, basis, boundary-condition, and observable fidelity; precision and tolerances; representative size and parameter coverage; and exceptional cases. This score does not charge for the difficulty of discovering the exact solution. A direct check against a pinned exact identity or recurrence that removes those coverage judgments can still score 0.
+
 ## The five problems
 
 | Problem | Area | Preferred result object | Decisive verification |
@@ -17,7 +29,7 @@ The collection is intended for research agents, human researchers, and reviewer 
 | [ORP-0011: Arboreal-gas negative association](problems/ORP-0011-arboreal-gas-negative-association.md) | Probability and statistical physics | A finite weighted graph and two distinguished edges | Enumerate all forests with exact arithmetic and check one strict partition-sum inequality |
 | [ORP-0008: Binary-answer monogamy-of-entanglement advantage](problems/ORP-0008-monogamy-of-entanglement-quantum-advantage.md) | Quantum information | A finite game and finite-dimensional quantum strategy | Validate the POVMs, enumerate classical strategies, evaluate the submitted strategy, and certify a strict quantum advantage |
 | [OMP-0058: Quantum Mrs. Gerber lower bound](problems/OMP-0058-quantum-mrs-gerber-lower-bound.md) | Quantum information theory | Preferably a finite-dimensional counterexample with a certified entropy gap | Check positivity and normalization, reconstruct the combined state, and recompute the conditional entropies with rigorous bounds |
-| [ORP-0010: Defect-sector Majorana spectrum](problems/ORP-0010-defect-sector-majorana-spectrum.md) | Quantum many-body dynamics | Closed-form expressions for the complete spectrum | Verify the characteristic-polynomial identity, multiplicities, branches, and exceptional parameter cases |
+| [ORP-0010: Defect-sector Majorana spectrum](problems/ORP-0010-defect-sector-majorana-spectrum.md) | Quantum many-body dynamics | Closed-form expressions for the complete spectrum | Independently compare the formulas with direct finite-size diagonalization, then audit multiplicities, branches, and exceptional parameter cases |
 
 Each linked file is the full research-problem README from its original problem repository. It gives the scientific background, exact question, expected result, review scope, possible CI, current status audit, and references.
 
