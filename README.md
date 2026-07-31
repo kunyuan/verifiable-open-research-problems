@@ -9,30 +9,27 @@ This repository contains five research problems selected for an unusual but usef
 
 The collection is intended for research agents, human researchers, and reviewer agents. Difficulty of discovery is not a rejection criterion. The central selection criterion is the separation between a hard search problem and a comparatively simple verification problem.
 
-## Verification-difficulty rubric
+## Verification difficulty
 
-Verification difficulty measures the work needed to check a submitted result after it has been found. It does **not** measure solving difficulty, scientific importance, or the compute used during discovery. The score is assigned to an accepted result branch; if a problem accepts materially different branches, each branch may have a different score.
+This collection uses the existing [0–10 residual-verification rubric](https://github.com/kunyuan/open-research-discovery/blob/main/docs/verification-difficulty-casebook.md) from `kunyuan/open-research-discovery`. The score measures only the burden left on an independent Reviewer after every mechanically delegable check has been delegated. It never measures solving or discovery difficulty, expected solve time, compute, searchability, feedback density, or probability of success.
 
-| Level | Verification contract |
-| --- | --- |
-| **1 — Direct exact check** | A small finite witness or certificate can be checked by a short deterministic computation, normally with exact arithmetic and little domain-specific judgment. |
-| **2 — Independent numerical replay** | An exact or closed-form result can be evaluated and checked against an independently constructed numerical representation of the original problem, with stated precision, tolerances, coverage, and exceptional cases. Modest symbolic preprocessing or certified numerics may be included. |
-| **3 — Derivation-heavy review** | Correctness cannot be decided by a bounded independent replay alone and requires substantial expert review of a proof, derivation, or computer-assisted argument. |
-| **4 — No bounded decisive check** | Verification would effectively require open-ended research or re-solving the problem because no precise, falsifiable, resource-bounded acceptance contract is known. A candidate at this level should be narrowed before inclusion in this repository. |
+- **0:** no residual reasoning remains after mechanical checks, replay, or certificates, and specification fidelity is trivial.
+- **1–3:** a few independent, local, standard reasoning units remain.
+- **4–6:** connected derivations or substantial specification-fidelity reconstruction remain.
+- **7–9:** a long, fragile, or novel chain remains.
+- **10:** the essential claim requires holistic review and cannot be decomposed into independently checkable units.
 
-In particular, an exact solution in quantum many-body physics or an integrable model is **verification difficulty 2** when its predictions can be independently compared with direct numerical calculations of the original finite-size model. Typical checks include exact diagonalization or tensor-network calculations of spectra, energies, gaps, correlators, or time evolution over documented system sizes and parameter points.
-
-For level 2, the verifier must not reuse the submitted implementation as its oracle. The submission should define the finite-size model, basis and boundary conventions, numerical precision and tolerances, representative generic and edge-case parameters, expected scaling, and unambiguous pass/fail conditions. Finite numerical tests do not by themselves prove a universal identity; the score records the practical verification burden, while reviewers must still audit the claimed scope, exceptional cases, and novelty.
+Within that existing scale, an exact solution whose practical acceptance path relies primarily on independent numerical reproduction of the original finite-size model is **verification difficulty 2**. Typical examples include spectra, energies, gaps, correlators, and finite-time evolution in quantum many-body or integrable models. The light residual is checking model, basis, boundary-condition, and observable fidelity; precision and tolerances; representative size and parameter coverage; and exceptional cases. This score does not charge for the difficulty of discovering the exact solution. A direct check against a pinned exact identity or recurrence that removes those coverage judgments can still score 0.
 
 ## The five problems
 
-| Problem | Area | Preferred result object | Verification difficulty | Decisive verification |
-| --- | --- | --- | --- | --- |
-| [ORP-0012: Spherical-rotor Griffiths inequality](problems/ORP-0012-spherical-rotor-griffiths-inequality.md) | Classical statistical physics | An explicit finite interacting $O(n)$ counterexample | **2** | Check the couplings and observables, recompute three certified expectations, and verify a strictly negative covariance |
-| [ORP-0011: Arboreal-gas negative association](problems/ORP-0011-arboreal-gas-negative-association.md) | Probability and statistical physics | A finite weighted graph and two distinguished edges | **1** | Enumerate all forests with exact arithmetic and check one strict partition-sum inequality |
-| [ORP-0008: Binary-answer monogamy-of-entanglement advantage](problems/ORP-0008-monogamy-of-entanglement-quantum-advantage.md) | Quantum information | A finite game and finite-dimensional quantum strategy | **2** | Validate the POVMs, enumerate classical strategies, evaluate the submitted strategy, and certify a strict quantum advantage |
-| [OMP-0058: Quantum Mrs. Gerber lower bound](problems/OMP-0058-quantum-mrs-gerber-lower-bound.md) | Quantum information theory | Preferably a finite-dimensional counterexample with a certified entropy gap | **2** | Check positivity and normalization, reconstruct the combined state, and recompute the conditional entropies with rigorous bounds |
-| [ORP-0010: Defect-sector Majorana spectrum](problems/ORP-0010-defect-sector-majorana-spectrum.md) | Quantum many-body dynamics | Closed-form expressions for the complete spectrum | **2** | Independently compare the formulas with direct finite-size diagonalization, then audit multiplicities, branches, and exceptional parameter cases |
+| Problem | Area | Preferred result object | Decisive verification |
+| --- | --- | --- | --- |
+| [ORP-0012: Spherical-rotor Griffiths inequality](problems/ORP-0012-spherical-rotor-griffiths-inequality.md) | Classical statistical physics | An explicit finite interacting $O(n)$ counterexample | Check the couplings and observables, recompute three certified expectations, and verify a strictly negative covariance |
+| [ORP-0011: Arboreal-gas negative association](problems/ORP-0011-arboreal-gas-negative-association.md) | Probability and statistical physics | A finite weighted graph and two distinguished edges | Enumerate all forests with exact arithmetic and check one strict partition-sum inequality |
+| [ORP-0008: Binary-answer monogamy-of-entanglement advantage](problems/ORP-0008-monogamy-of-entanglement-quantum-advantage.md) | Quantum information | A finite game and finite-dimensional quantum strategy | Validate the POVMs, enumerate classical strategies, evaluate the submitted strategy, and certify a strict quantum advantage |
+| [OMP-0058: Quantum Mrs. Gerber lower bound](problems/OMP-0058-quantum-mrs-gerber-lower-bound.md) | Quantum information theory | Preferably a finite-dimensional counterexample with a certified entropy gap | Check positivity and normalization, reconstruct the combined state, and recompute the conditional entropies with rigorous bounds |
+| [ORP-0010: Defect-sector Majorana spectrum](problems/ORP-0010-defect-sector-majorana-spectrum.md) | Quantum many-body dynamics | Closed-form expressions for the complete spectrum | Independently compare the formulas with direct finite-size diagonalization, then audit multiplicities, branches, and exceptional parameter cases |
 
 Each linked file is the full research-problem README from its original problem repository. It gives the scientific background, exact question, expected result, review scope, possible CI, current status audit, and references.
 
