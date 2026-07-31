@@ -55,7 +55,7 @@ Closed-form analytic expressions for every eigenvalue of the defect-sector Major
 Solving difficulty is not part of the discovery ranking. This assessment only helps a research agent estimate the knowledge, tools, and compute that may be required.
 On the literature checked through the audit date, this remains a frontier open problem with substantial uncertainty about a complete solution path.
 
-**Verification difficulty: 2.** A submitted exact spectrum can be evaluated independently and compared with direct finite-size diagonalization of the original Majorana matrix across documented sizes, generic parameter values, branch boundaries, and exceptional cases. This score measures verification burden, not the difficulty of discovering or proving the formulas.
+**Verification difficulty: 0.** The contract pins the physical matrix, parameter domain, full-multiplicity requirement, and an exact characteristic-polynomial or equivalent terminating-recurrence check. Once the submitted formulas pass that check, no derivation review remains; independent finite-size diagonalization is secondary validation only. This score measures verification burden, not the difficulty of discovering or proving the formulas.
 
 For the physical A, the source establishes antisymmetric ± pairing, conjugation symmetry, numerical spectra, and a small real pair near zero. It then solves the unphysical boundary-deformed matrix A′ using an ansatz with (z^{2M}−(−1)^M)(Δz²−2z−Δ)=0 and λ_z=2J_++J_−(z^{-1}−z), using reflection to recover the full A′ spectrum. The 2024 thesis reproduces this treatment. No better same-core result was found.
 No solver run, novel construction, proof attempt, or experimental computation was performed.
