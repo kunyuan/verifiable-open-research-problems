@@ -1,13 +1,23 @@
 # Verifiable Open Research Problems
 
-This repository contains five research problems selected for an unusual but useful combination:
+This repository currently contains five research problems selected for scientific significance, a surviving open core, and a precise resolution boundary:
 
 - they address open questions with real mathematical or physical significance;
 - solving them may be very difficult;
-- a successful result can usually be reviewed from the delivered answer itself, without reconstructing the solver's search or reasoning process; and
-- the decisive checks are finite enough that an independent verifier, and often CI, can be designed.
+- each can support an independent research project rather than merely supply an intermediate step or technical detail for one work; and
+- each declares a credible acceptance path, which may be mechanical, hybrid, or expert review.
 
-The collection is intended for research agents, human researchers, and reviewer agents. Difficulty of discovery is not a rejection criterion. The central selection criterion is the separation between a hard search problem and a comparatively simple verification problem.
+The collection is intended for research agents, human researchers, and reviewer agents. Neither difficulty of discovery nor difficulty of verification is a rejection criterion for a major scientific problem. Verification difficulty determines the review burden; it does not determine scientific value.
+
+## Selection and audit policy
+
+The repository follows the [Problem Selection and Audit Policy](AUDIT_POLICY.md). Its central test is whether resolving the frozen question would constitute a meaningful scientific result on its own.
+
+- Prefer recognized or potentially field-shaping scientific questions that are independently publishable.
+- Exclude workflow fragments, intermediate lemmas, routine calculations, and technical details without standalone scientific consequences.
+- Require a dated open-status audit, traceable provenance, a coherent atomic scope, and an explicit closure condition.
+- Permit `expert_review` for major problems whose proofs or derivations cannot be reduced to an automatic verifier.
+- When a promising candidate retains a material ambiguity, publish a problem draft with the open issue and wait for substantive feedback instead of repeatedly polishing it.
 
 ## Verification difficulty
 
@@ -33,7 +43,15 @@ Within that existing scale, an exact solution whose practical acceptance path re
 
 Each linked file is the full research-problem README from its original problem repository. It gives the scientific background, exact question, expected result, review scope, possible CI, current status audit, and references.
 
-## What “result-only” means
+## Review modes and “result-only” answers
+
+Problems may use:
+
+- **mechanical review**, when a terminating replay or certificate decides the claim;
+- **hybrid review**, when replay is useful but expert reasoning remains; or
+- **expert review**, when independent domain experts must assess a proof, derivation, classification, or physical argument.
+
+The absence of a complete automatic oracle does not exclude an important problem. Even under expert review, submissions should include meaningful finite-case, limiting-case, consistency, or numerical checks whenever available.
 
 Result-only is a property of review, not of the solver's method.
 
@@ -51,21 +69,21 @@ Result-only does **not** mean “give an unexplained number.” A submission mus
 
 The classification can depend on the answer branch. For example, a certified finite counterexample to the Quantum Mrs. Gerber conjecture is result-only, while a conventional proof of the full universal inequality would require substantive derivation review.
 
-## Why these problems are useful for agents
+## Why these problems are useful for agents and researchers
 
-Research agents are often good at generating candidates but expensive to review. These problems move effort toward the search side while keeping the acceptance boundary sharp:
+The collection keeps the acceptance boundary explicit without requiring every problem to fit the same verifier shape:
 
 ```text
-potentially difficult discovery
+scientifically independent open problem
         ↓
-finite or closed-form result object
+frozen claim and closure condition
         ↓
-independent replay or exact check
+mechanical / hybrid / expert review
         ↓
-scientific reviewer confirms scope and novelty
+accepted result with explicit evidence level
 ```
 
-This structure supports parallel search, adversarial reviewing, reproducible computation, and benchmark construction. It also reduces the chance that a plausible-looking narrative is mistaken for a result.
+This structure supports serious work on both readily checkable problems and landmark questions requiring scientific judgment. It also reduces the chance that a plausible-looking narrative, a partial calculation, or a local technical improvement is mistaken for resolution of an independent problem.
 
 ## Instructions for solving a problem
 
@@ -121,9 +139,11 @@ THEREFORE
 the stated open problem is resolved in the claimed direction
 ```
 
-### 5. Supply independent replay
+### 5. Supply the required review package
 
-When computation is load-bearing, provide:
+For `expert_review`, provide the complete load-bearing proof or derivation, identify every assumption, connect the result explicitly to the closure condition, and include available checks of known limits, finite cases, or independent observables.
+
+When computation is load-bearing, also provide:
 
 - machine-readable input data;
 - a pinned software environment;
@@ -141,7 +161,7 @@ Before claiming success, ask:
 
 1. Does the result answer the original question rather than a nearby variant?
 2. Are all domain, normalization, positivity, boundary, and exactness conditions satisfied?
-3. Can a reviewer reproduce the decisive check without seeing the search process?
+3. Does the submission contain the complete evidence required by the declared mechanical, hybrid, or expert review mode?
 4. Is the strict gap or symbolic identity robust under independent computation?
 5. Is the conclusion limited to what the result actually establishes?
 6. Has novelty been checked against current literature and other active attempts?
@@ -153,7 +173,7 @@ Prefer a standalone solution repository containing only what is needed to unders
 ```text
 README.md          # claim, scientific meaning, and replay instructions
 result/            # exact witness, formulas, or machine-readable output
-verify/            # independent or submission-side verifier
+verify/            # independent or submission-side checks, when applicable
 environment files # pinned dependencies
 tests/             # scientifically meaningful regression checks
 ```
@@ -162,14 +182,14 @@ Open an issue in this repository linking the solution repository and identifying
 
 ## Guidance for reviewer agents
 
-A reviewer should begin with the final result object, not with the solver's narrative. The core questions are:
+A reviewer should begin with the frozen problem and the submitted final claim. The core questions are:
 
 - Is the object admissible under the original problem?
-- Does an independent replay reproduce the decisive claim?
+- Does the required mechanical, hybrid, or expert review support the decisive claim?
 - Does that claim resolve the stated scope?
 - Is the result genuinely new?
 
-Review derivations only when they are part of the answer type. For result-only submissions, do not require reconstruction of how the object was discovered.
+Review derivations whenever they are load-bearing under the declared answer type. For result-only submissions, do not require reconstruction of how the object was discovered. Agent checks and CI are evidence, but they do not replace required domain-expert acceptance.
 
 ## Status disclaimer
 
